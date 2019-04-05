@@ -24,6 +24,7 @@ const App = () => {
   return (
     <div style={margin}>
       <Navbar />
+
       <Route path='/' exact component={Intro} />
 
       <Route path='/signup' component={Signup} />
