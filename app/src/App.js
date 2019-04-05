@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Redirect, NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 
 // Components
 import Signup from './components/Signup';
@@ -13,10 +14,10 @@ const margin = {
 
 const Intro = () => {
   return (
-    <div>
+    <StyledIntro>
       <h2>Would you like to see some dad jokes?</h2>
       <NavLink to='/login'>Log in!</NavLink>
-    </div>
+    </StyledIntro>
   );
 };
 
@@ -29,7 +30,7 @@ const App = () => {
 
       <Route path='/signup' component={Signup} />
 
-      <Route path='/login' component={Login} />
+      <Route path='/login' render={pr => <Login {...pr} />} />
 
       <Route
         path='/jokes'
@@ -46,3 +47,16 @@ const App = () => {
 };
 
 export default App;
+
+const StyledIntro = styled.div`
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    text-align: center;
+  }
+  a {
+    text-align: center;
+  }
+`;

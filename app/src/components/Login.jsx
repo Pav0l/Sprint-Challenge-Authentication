@@ -9,7 +9,7 @@ export default class Login extends React.Component {
     return (
       <LoginContainer>
         <SocialHeader />
-        <Form type='login' />
+        <Form type='login' {...this.props} />
       </LoginContainer>
     );
   }

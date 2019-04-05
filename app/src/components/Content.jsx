@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import styled from 'styled-components';
 // import axios from 'axios';
 
 // import request function/object
@@ -45,11 +46,18 @@ export default function DadzJokes({ history }) {
   return (
     <div>
       <button onClick={logoutClick}>Log Out</button>
-      <p>{jokes.length} jokes found</p>
-      <h3>Jokes:</h3>
+      <h3>{jokes.length} jokes found</h3>
       <div>
-        {jokes && jokes.map(joke => <div key={joke.id}>{joke.joke}</div>)}
+        {jokes &&
+          jokes.map(joke => <JokeWrap key={joke.id}>{joke.joke}</JokeWrap>)}
       </div>
     </div>
   );
 }
+
+const JokeWrap = styled.div`
+  margin-bottom: 0.5rem;
+  border: 1px solid #eff0f1;
+  border-radius: 4px;
+  padding: 1rem;
+`;

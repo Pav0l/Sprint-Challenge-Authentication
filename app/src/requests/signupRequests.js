@@ -4,8 +4,6 @@ import routingInfo from './routes';
 const { url, port, register } = routingInfo;
 
 const createNewUser = (username, password) => {
-  console.log('createNewUser', username, password);
-  console.log(`${url}:${port}${register}`);
   axios
     .post(`${url}:${port}${register}`, {
       username,

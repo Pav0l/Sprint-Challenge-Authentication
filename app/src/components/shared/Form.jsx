@@ -37,10 +37,9 @@ export default class Signup extends React.Component {
     const { username, password } = this.state;
 
     if (this.props.type === 'signup') {
-      console.log('signup form');
       createNewUser(username, password);
     } else if (this.props.type === 'login') {
-      loginUser(username, password);
+      loginUser(username, password, this.props);
     }
 
     this.setState(emptyForm);
