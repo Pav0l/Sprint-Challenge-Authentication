@@ -28,8 +28,36 @@ async function register(req, res) {
   }
 }
 
-function login(req, res) {
-  // implement user login
+async function login(req, res) {
+  try {
+    const { username, password } = req.body;
+
+    if (username && password) {
+      const doesUserExist = await getUserByName(username);
+      const isPasswordCorrect = bcrypt.compareSync(
+        password,
+        doesUserExist.password
+      );
+
+      if (doesUserExist && isPasswordCorrect) {
+        const jwtToken = jwt.sign(
+          { user_id: doesUserExist.id },
+          process.env.JWT_SECRET,
+          { expiresIn: '7d' }
+        );
+        res.status(200).json({
+          user_id: doesUserExist.id,
+          token: jwtToken,
+        });
+      } else {
+        res.status(400).json({ message: `User ${username} does not exist.` });
+      }
+    } else {
+      res.status(400).json({ message: 'Missing username and/or password.' });
+    }
+  } catch (error) {
+    res.status(500).json(error);
+  }
 }
 
 function getJokes(req, res) {
