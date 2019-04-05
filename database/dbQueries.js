@@ -10,5 +10,7 @@ function addNewUser(username, password) {
 }
 
 function getUserByName(username) {
-  return db('users').where({ username });
+  return db('users')
+    .where({ username })
+    .first();
 }
