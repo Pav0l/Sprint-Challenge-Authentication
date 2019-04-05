@@ -29,9 +29,24 @@ Implement an User Authentication System in order to access the jokes from the Jo
 Demonstrate your understanding of this week's concepts by answering the following free-form questions. Edit this document to include your answers after each question. Make sure to leave a blank line above and below your answer so it is clear and easy to read by your project manager.
 
 1. What is the purpose of using _sessions_?
+
+Sessions are used so the server can store information about a client and the client doesn't have to provide credentials manually on every request he makes to the server.
+
 1. What does bcrypt do to help us store passwords in a secure manner.
+
+bcrypt hashes data passed to it with an added salt. it is also used to test a string against a hash to see if it matches or not.
+
 1. What does bcrypt do to slow down attackers?
+
+The salt for each password is different. So an attacker would have to create a rainbow table for every user/password we have in DB.
+
 1. What are the three parts of the JSON Web Token?
+
+**Header** - has 2 parts - type (JWT) and hasginh algorithm
+
+**Payload** - has the bulk of JWT. There are some reserved names for JWT props (iss - issuer, exp - expiration date) but the rest of it can be whatever we want it to be (as a JSON)
+
+**Signature** - is made of encoded hashes of header, payload and a secret (shared between the client and server).
 
 ## Project Set Up
 
@@ -48,9 +63,9 @@ Follow these steps for completing your project:
 
 - [ ] `cd` into the root of the project and run `yarn` to install dependencies.
 - [ ] Once you have your `node_modules` go ahead and run `yarn server` or `npm run server` to start your node server.
-- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's  Repo).
+- [ ] Submit a Pull-Request to merge <firstName-lastName> Branch into master (student's Repo).
 - [ ] Add your Project Manager as a Reviewer on the Pull-request
-- [ ] PM then will count the HW as done by  merging the branch back into master.
+- [ ] PM then will count the HW as done by merging the branch back into master.
 
 Helpful Tip on Testing this Project:
 
